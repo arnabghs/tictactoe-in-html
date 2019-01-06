@@ -1,6 +1,9 @@
 let firstPlayerMoves = new Array();
 let secondPlayerMoves = new Array();
 let firstPlayer, secondPlayer = '';
+let firstSymbol = "<img src='icons/shuriken1.png' height = 85px>";
+let secondSymbol = "<img src='icons/shuriken2.png' height = 70px>";
+
 let turnCount = 1;
 
 const isEven = function (number) {
@@ -37,7 +40,7 @@ const isCellTaken = function (cell) {
 
 const initiateBoard = function (event) {
 	let index = +event.target.id;
-	let symbol = isEven(turnCount) ? 'O' : 'X';
+	let symbol = isEven(turnCount) ? secondSymbol : firstSymbol;
 	let playerName = isEven(turnCount) ? firstPlayer : secondPlayer;
 	document.getElementById('message').innerText = "";
 	if (isCellTaken(index)) {
@@ -48,7 +51,7 @@ const initiateBoard = function (event) {
 			document.getElementById("table").style.pointerEvents = "none";
 		}
 		showPlayerName(playerName);
-		document.getElementById(index).innerText = symbol;
+		document.getElementById(index).innerHTML = symbol;
 		updateMoveArray(index);
 		checkWinCondition();
 		turnCount++;
