@@ -5,8 +5,8 @@
 	<script src="main.js"></script>
 </head>
 
-<body>
-	<table id="table" onclick="clicked(event)">
+<body onload="loadPage()">
+	<table id="table" onclick="initiateBoard(event)">
 		<tr>
 			<td id="0"></td>
 			<td id="1"></td>
@@ -24,7 +24,7 @@
 		</tr>
 	</table>
 	<div class='container'>
-		<button id="startButton"> Start Game</button>
+		<button id="startButton" onclick="startGame()"> Start Game</button>
 		<button id="refreshButton" onclick="location.reload()"> Restart </button>
 	</div>
 	<div id='message' class="message"> </div>

@@ -34,20 +34,28 @@ const isCellTaken = function (cell) {
 	return usedCells.includes(cell);
 }
 
-const clicked = function (event) {
+const initiateBoard = function (event) {
 	let index = +event.target.id;
 	let symbol = isEven(turnCount) ? 'O' : 'X';
 	document.getElementById('message').innerText = "";
 	if (isCellTaken(index)) {
 		document.getElementById('message').innerText = "The cell is already taken, please choose a diffrent cell.";
 	} else {
-		document.getElementById(index).innerText = symbol;
-		updateMoveArray(index);
-		checkWinCondition();
-		turnCount++;
 		if (turnCount > 9) {
 			document.getElementById('message').innerText = "Game is Drawn.";
 			document.getElementById("table").style.pointerEvents = "none";
 		}
+		document.getElementById(index).innerText = symbol;
+		updateMoveArray(index);
+		checkWinCondition();
+		turnCount++;
 	}
+}
+
+const startGame = function () {
+	document.getElementById("table").style.pointerEvents = "auto";
+}
+
+const loadPage = function () {
+	document.getElementById("table").style.pointerEvents = "none";
 }
