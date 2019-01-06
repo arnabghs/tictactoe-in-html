@@ -16,28 +16,38 @@ const updateMoveArray = function (index) {
 	let arrayToUpdate = firstPlayerMoves;
 	if (isEven(turnCount)) arrayToUpdate = secondPlayerMoves;
 	arrayToUpdate.push(index);
-	return arrayToUpdate;
 }
 
 const checkWinCondition = function () {
 	if (isSubset(firstPlayerMoves)) {
-		document.getElementById('result').innerText = "Game won by Player1 !";
+		document.getElementById('message').innerText = "Game won by Player1 !";
 		document.getElementById("table").style.pointerEvents = "none";
 	}
 	if (isSubset(secondPlayerMoves)) {
-		document.getElementById('result').innerText = "Game won by Player2 !";
+		document.getElementById('message').innerText = "Game won by Player2 !";
 		document.getElementById("table").style.pointerEvents = "none";
 	}
 }
 
+const isCellTaken = function (cell) {
+	let usedCells = firstPlayerMoves.concat(secondPlayerMoves);
+	return usedCells.includes(cell);
+}
+
 const clicked = function (event) {
+	let index = +event.target.id;
 	let symbol = isEven(turnCount) ? 'O' : 'X';
-	document.getElementById(event.target.id).innerText = symbol;
-	updateMoveArray(event.target.id - 1);
-	checkWinCondition();
-	turnCount++;
-	if (turnCount == 10) {
-		document.getElementById('result').innerText = "Game is Drawn.";
-		document.getElementById("table").style.pointerEvents = "none";
+	document.getElementById('message').innerText = "";
+	if (isCellTaken(index)) {
+		document.getElementById('message').innerText = "The cell is already taken, please choose a diffrent cell.";
+	} else {
+		document.getElementById(index).innerText = symbol;
+		updateMoveArray(index);
+		checkWinCondition();
+		turnCount++;
+		if (turnCount > 9) {
+			document.getElementById('message').innerText = "Game is Drawn.";
+			document.getElementById("table").style.pointerEvents = "none";
+		}
 	}
 }
