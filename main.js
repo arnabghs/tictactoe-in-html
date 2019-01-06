@@ -1,5 +1,6 @@
 let firstPlayerMoves = new Array();
 let secondPlayerMoves = new Array();
+let firstPlayer, secondPlayer = '';
 let turnCount = 1;
 
 const isEven = function (number) {
@@ -20,11 +21,11 @@ const updateMoveArray = function (index) {
 
 const checkWinCondition = function () {
 	if (isSubset(firstPlayerMoves)) {
-		document.getElementById('message').innerText = "Game won by Player1 !";
+		document.getElementById('message').innerText = `Game won by ${firstPlayer} !`;
 		document.getElementById("table").style.pointerEvents = "none";
 	}
 	if (isSubset(secondPlayerMoves)) {
-		document.getElementById('message').innerText = "Game won by Player2 !";
+		document.getElementById('message').innerText = `Game won by ${secondPlayer} !`;
 		document.getElementById("table").style.pointerEvents = "none";
 	}
 }
@@ -37,6 +38,7 @@ const isCellTaken = function (cell) {
 const initiateBoard = function (event) {
 	let index = +event.target.id;
 	let symbol = isEven(turnCount) ? 'O' : 'X';
+	let playerName = isEven(turnCount) ? firstPlayer : secondPlayer;
 	document.getElementById('message').innerText = "";
 	if (isCellTaken(index)) {
 		document.getElementById('message').innerText = "The cell is already taken, please choose a diffrent cell.";
@@ -45,6 +47,7 @@ const initiateBoard = function (event) {
 			document.getElementById('message').innerText = "Game is Drawn.";
 			document.getElementById("table").style.pointerEvents = "none";
 		}
+		showPlayerName(playerName);
 		document.getElementById(index).innerText = symbol;
 		updateMoveArray(index);
 		checkWinCondition();
@@ -52,8 +55,17 @@ const initiateBoard = function (event) {
 	}
 }
 
+const showPlayerName = function (playerName) {
+	document.getElementById("showPlayerTurn").innerText = `Turn of ${playerName} --> `
+
+}
+
 const startGame = function () {
+	firstPlayer = document.getElementById('player1').value;
+	secondPlayer = document.getElementById('player2').value;
 	document.getElementById("table").style.pointerEvents = "auto";
+	document.getElementById("table").style.backgroundColor = " lightgreen";
+	showPlayerName(firstPlayer);
 }
 
 const loadPage = function () {

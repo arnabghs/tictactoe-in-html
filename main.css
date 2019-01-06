@@ -1,12 +1,22 @@
+h1 {
+	text-align: center;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+body {
+	background-color: lightyellow
+}
+
 table {
-	border: 1px solid black;
+	border: 5px solid black;
 	position: relative;
 	margin: auto;
 	text-align: center;
 }
 
 td {
-	border: 1px solid black;
+	border: 2px solid black;
 	width: 100px;
 	height: 100px;
 }
@@ -17,13 +27,34 @@ button {
 }
 
 .container {
-	margin: 20px;
+	margin: 10px;
 	display: flex;
 	justify-content: center;
 }
 
-.message {
-	margin-top: 40px;
+#message {
+	margin-top: 20px;
 	text-align: center;
 	font-size: 30px;
+	background-color: darkorange;
+}
+
+.playerInfo {
+	font-size: 22px;
+}
+
+#player1 {
+	font-size: 20px;
+	margin: 5px;
+}
+
+#player2 {
+	font-size: 20px;
+}
+
+#showPlayerTurn {
+	margin: 10px 0px;
+	background-color: coral;
+	padding: 5px;
+	font-size: 20px;
 }

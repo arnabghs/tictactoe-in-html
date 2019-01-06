@@ -5,7 +5,13 @@
 	<script src="main.js"></script>
 </head>
 
-<body onload="loadPage()">
+<body class="body" onload="loadPage()">
+	<h1> Welcome to TIC-TAC-TOE </h1>
+	<div class='playerInfo'>
+		<div>First Player : <input id='player1' placeholder="Enter name of player1" /></div>
+		<div>Second Player : <input id='player2' placeholder="Enter name of player2" /></div>
+	</div>
+	<div id="showPlayerTurn">Press the start button once the names are filled</div>
 	<table id="table" onclick="initiateBoard(event)">
 		<tr>
 			<td id="0"></td>
@@ -27,7 +33,7 @@
 		<button id="startButton" onclick="startGame()"> Start Game</button>
 		<button id="refreshButton" onclick="location.reload()"> Restart </button>
 	</div>
-	<div id='message' class="message"> </div>
+	<div id='message'> </div>
 </body>
 
 </html>
