@@ -12,7 +12,7 @@
 		<div>Second Player : <input id='player2' placeholder="Enter name of player2" /></div>
 	</div>
 	<div id="showPlayerTurn">Press the start button once the names are filled</div>
-	<table id="table" onclick="initiateBoard(event)">
+	<table id="table" onclick="initiateBoard(+event.target.id)">
 		<tr>
 			<td id="0"></td>
 			<td id="1"></td>
