@@ -68,8 +68,8 @@ const displayWhichPlayerTurn = function () {
 
 const updateBoard = function (index) {
 	placeSymbol(index);
-	checkWinCondition(playerName);
 	checkDrawCondition();
+	checkWinCondition(playerName);
 	displayWhichPlayerTurn();
 }
 
