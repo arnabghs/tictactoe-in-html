@@ -18,7 +18,7 @@ const updateArray = cycler(2);
 
 const winnigCombination = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
-const isSubset = function (userMoves) {
+const isWinningCombination = function (userMoves) {
 	return winnigCombination.some(con => con.every(ele => userMoves.includes(ele)));
 }
 
@@ -27,8 +27,12 @@ const updateMoveArray = function (index) {
 	arrayToUpdate.push(index);
 }
 
+const hasWon = function () {
+	return isWinningCombination(firstPlayerMoves) || isWinningCombination(secondPlayerMoves);
+}
+
 const checkWinCondition = function (playerName) {
-	if (isSubset(firstPlayerMoves) || isSubset(secondPlayerMoves)) {
+	if (hasWon()) {
 		document.getElementById('message').innerText = `Game won by ${playerName} !`;
 		document.getElementById("table").style.pointerEvents = "none";
 	}
